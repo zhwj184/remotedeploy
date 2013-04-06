@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Remotedeploy
+Bundle-SymbolicName: remotedeploy; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: remotedeploy.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: lib/ganymed-ssh2-build210.jar
