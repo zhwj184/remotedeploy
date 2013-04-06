@@ -24,17 +24,29 @@ public class SshCopyUtil {
 				System.err.println("Authenticated false!!!");
 			}
 			client = new SCPClient(conn);
-			client.put(ConfigDialog.source, ConfigDialog.desc); // 这里是将本地文件上传到服务器端的目录下
+			copy(new File(ConfigDialog.source));
+//			client.put(ConfigDialog.source, ConfigDialog.desc); // 这里是将本地文件上传到服务器端的目录下
 //			client.get("/home/liuwei/lwtest.txt", "/home/liuwei/shelltest/"); // 这里是将服务器端的文件下载到本地的目录下
 			conn.close();
 		} catch (IOException ex) {
 			System.err.println(ex);
 		}
 	}
+	
+	public static void copy(File source){
+		if(source.isFile()){
+			put(source.getPath());
+		}else{
+			File[] files = source.listFiles();
+			for(File file: files){
+				copy(file);
+			}
+		}
+	}
 
 	public static void put(String sourceFile){
 		try {
-			client.put(sourceFile, ConfigDialog.desc + "/" + sourceFile.substring(ConfigDialog.source.length()).replace(File.separator, "/"));
+			client.put(sourceFile, ConfigDialog.desc + sourceFile.substring(ConfigDialog.source.length()).replace(File.separator, "/"));
 		} catch (IOException e) {
 			System.err.println(e);
 		}
