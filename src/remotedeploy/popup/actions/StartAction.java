@@ -40,7 +40,9 @@ public class StartAction implements IObjectActionDelegate {
 //			"New Action was executed.");
 		new ConfigDialog(shell).open();
 		SshCopyUtil.executeCommand();
-		FileChangeWatcherThread.start(SelectFileUtil.getSelectFile().getPath());
+		if(SelectFileUtil.getSelectFile().isDirectory()){
+			FileChangeWatcherThread.start(SelectFileUtil.getSelectFile().getPath());
+		}
 	}
 
 	/**

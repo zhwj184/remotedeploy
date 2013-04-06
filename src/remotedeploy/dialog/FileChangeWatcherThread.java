@@ -36,9 +36,9 @@ public class FileChangeWatcherThread  extends Thread{
 			FileChangeWatcher watch = new FileChangeWatcher(Paths.get(this.path));
 			watch.handleEvents();
 		} catch (IOException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 

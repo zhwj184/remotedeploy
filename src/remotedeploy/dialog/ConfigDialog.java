@@ -13,11 +13,20 @@ import org.eclipse.swt.widgets.Text;
 public class ConfigDialog extends Dialog {
 
 	public static String host = "";
-	public static String port = "";
+	public static String port = "22";
 	public static String user = "";
 	public static String passwd = "";
 	public static String desc = "";
 	public static String source = "";
+	public static String filemode="0644";
+
+//	public static String host = "10.20.146.95";
+//	public static String port = "22";
+//	public static String user = "admin";
+//	public static String passwd = "admin";
+//	public static String desc = "/home/admin/test";
+//	public static String source = "";
+	
 	
 	
 	private Text textHost;
@@ -26,9 +35,11 @@ public class ConfigDialog extends Dialog {
 	private Text textPasswd;
 	private Text textSource;
 	private Text textDesc;
+	private Text textMode;
 
 	public ConfigDialog(Shell parentShell) {
 		super(parentShell);
+		PropertiesUtil.init();
 	}
 
 	/**
@@ -79,6 +90,12 @@ public class ConfigDialog extends Dialog {
 		// labelDest.setSize(20, 20);
 		textDesc = new Text(parent, SWT.BORDER); // 设置一个Text控件
 		textDesc.setText(desc); // 设置text中的内容
+		
+		Label labelMode = new Label(parent, SWT.NORMAL);
+		labelMode.setText("文件权限");
+		// labelDest.setSize(20, 20);
+		textMode = new Text(parent, SWT.BORDER); // 设置一个Text控件
+		textMode.setText(filemode); // 设置text中的内容
 
 		return parent;
 	}
@@ -95,6 +112,10 @@ public class ConfigDialog extends Dialog {
 			passwd = textPasswd.getText();
 			source = textSource.getText();
 			desc = textDesc.getText();
+			filemode = textMode.getText();
+			PropertiesUtil.save();
+			super.buttonPressed(buttonId);
+		}else if(buttonId == IDialogConstants.CANCEL_ID){
 			super.buttonPressed(buttonId);
 		}
 	}
