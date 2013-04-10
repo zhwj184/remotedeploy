@@ -12,12 +12,11 @@ public class SshCopyUtil {
 	private static SCPClient client;
 	private static SFTPv3Client sftpClient;
 	
-	public static String executeCommand() {
+	public static void executeCommand() {
 		if (ConfigDialog.host == null || ConfigDialog.user == null || ConfigDialog.passwd == null
 				|| ConfigDialog.source == null || ConfigDialog.desc == null) {
 			System.err.println("Can't execute SCP command. Please check \"hostname\" \"username\" and \"password\"");
 			System.exit(1);
-			return "check your config properties,every field must not be null";
 		}
 		Connection conn = new Connection(ConfigDialog.host);
 		try {
@@ -25,7 +24,6 @@ public class SshCopyUtil {
 			boolean isAuthenticated = conn.authenticateWithPassword(ConfigDialog.user, ConfigDialog.passwd);
 			if (isAuthenticated == false) {
 				System.err.println("Authenticated false!!!");
-				return "Authenticated false,check your config is right or not";
 			}
 			client = new SCPClient(conn);
 			sftpClient = new SFTPv3Client(conn);  
@@ -46,7 +44,6 @@ public class SshCopyUtil {
 		} catch (IOException ex) {
 //			ex.printStackTrace();
 		}
-		return "success";
 	}
 	
 	public static void copy(File source){
