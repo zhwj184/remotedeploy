@@ -1,23 +1,26 @@
-package remotedeploy.popup.actions;
+package remoteresourcedeploy.popup.actions;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+import remotedeploy.dialog.ConfigDialog;
 import remotedeploy.dialog.FileChangeWatcherThread;
 import remotedeploy.dialog.SelectFileUtil;
+import remotedeploy.dialog.SshCopyUtil;
 
-public class StopAction implements IObjectActionDelegate {
+public class StartAction implements IObjectActionDelegate {
 
 	private Shell shell;
 	
 	/**
 	 * Constructor for Action1.
 	 */
-	public StopAction() {
+	public StartAction() {
 		super();
 	}
 
@@ -36,7 +39,12 @@ public class StopAction implements IObjectActionDelegate {
 //			shell,
 //			"Remotedeploy",
 //			"New Action was executed.");
-		FileChangeWatcherThread.stop(SelectFileUtil.getSelectFile().getPath());
+		new ConfigDialog(shell).open();
+		String retCode = SshCopyUtil.executeCommand(shell);
+		if(SelectFileUtil.getSelectFile().isDirectory()){
+			FileChangeWatcherThread.start(SelectFileUtil.getSelectFile().getPath());
+		}
+		MessageDialog.openInformation(shell,"Remotedeploy",retCode);
 	}
 
 	/**

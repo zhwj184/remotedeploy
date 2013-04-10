@@ -5,82 +5,83 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             objectClass="org.eclipse.core.resources.IFolder"
-            id="remotedeploy.contribution1">
+            id="remoteresourcedeploy.contribution1">
          <menu
                label="远程部署"
                path="additions"
-               id="remotedeploy.menu1">
+               id="remoteresourcedeploy.menu1">
             <separator
                   name="group1">
             </separator>
          </menu>
          <action
                label="开始"
-               class="remotedeploy.popup.actions.StartAction"
-               menubarPath="remotedeploy.menu1/group1"
+               class="remoteresourcedeploy.popup.actions.StartAction"
+               menubarPath="remoteresourcedeploy.menu1/group1"
                enablesFor="1"
-               id="remotedeploy.startAction">
+               id="remoteresourcedeploy.startAction">
          </action>
          <action
                label="停止"
-               class="remotedeploy.popup.actions.StopAction"
-               menubarPath="remotedeploy.menu1/group1"
+               class="remoteresourcedeploy.popup.actions.StopAction"
+               menubarPath="remoteresourcedeploy.menu1/group1"
                enablesFor="1"
-               id="remotedeploy.stopAction">
+               id="remoteresourcedeploy.stopAction">
          </action>
       </objectContribution>
       <objectContribution
             objectClass="org.eclipse.core.resources.IProject"
-            id="remotedeploy.contribution1">
+            id="remoteresourcedeploy.contribution1">
          <menu
                label="远程部署"
                path="additions"
-               id="remotedeploy.menu1">
+               id="remoteresourcedeploy.menu1">
             <separator
                   name="group1">
             </separator>
          </menu>
          <action
                label="开始"
-               class="remotedeploy.popup.actions.StartAction"
-               menubarPath="remotedeploy.menu1/group1"
+               class="remoteresourcedeploy.popup.actions.StartAction"
+               menubarPath="remoteresourcedeploy.menu1/group1"
                enablesFor="1"
-               id="remotedeploy.startAction">
+               id="remoteresourcedeploy.startAction">
          </action>
          <action
                label="停止"
-               class="remotedeploy.popup.actions.StopAction"
-               menubarPath="remotedeploy.menu1/group1"
+               class="remoteresourcedeploy.popup.actions.StopAction"
+               menubarPath="remoteresourcedeploy.menu1/group1"
                enablesFor="1"
-               id="remotedeploy.stopAction">
+               id="remoteresourcedeploy.stopAction">
          </action>
       </objectContribution>
       <objectContribution
             objectClass="org.eclipse.core.resources.IFile"
-            id="remotedeploy.contribution1">
+            id="remoteresourcedeploy.contribution1">
          <menu
                label="远程部署"
                path="additions"
-               id="remotedeploy.menu1">
+               id="remoteresourcedeploy.menu1">
             <separator
                   name="group1">
             </separator>
          </menu>
          <action
                label="开始"
-               class="remotedeploy.popup.actions.StartAction"
-               menubarPath="remotedeploy.menu1/group1"
+               class="remoteresourcedeploy.popup.actions.StartAction"
+               menubarPath="remoteresourcedeploy.menu1/group1"
                enablesFor="1"
-               id="remotedeploy.startAction">
+               id="remoteresourcedeploy.startAction">
          </action>
          <action
                label="停止"
-               class="remotedeploy.popup.actions.StopAction"
-               menubarPath="remotedeploy.menu1/group1"
+               class="remoteresourcedeploy.popup.actions.StopAction"
+               menubarPath="remoteresourcedeploy.menu1/group1"
                enablesFor="1"
-               id="remotedeploy.stopAction">
+               id="remoteresourcedeploy.stopAction">
          </action>
       </objectContribution>
    </extension>
 
 </plugin>
+

@@ -1,4 +1,4 @@
-package remotedeploy.popup.actions;
+package remoteresourcedeploy.popup.actions;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;

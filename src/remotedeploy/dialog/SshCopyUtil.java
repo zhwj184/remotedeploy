@@ -3,6 +3,9 @@ package remotedeploy.dialog;
 import java.io.File;
 import java.io.IOException;
 
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Shell;
+
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.SCPClient;
 import ch.ethz.ssh2.SFTPv3Client;
@@ -12,15 +15,14 @@ public class SshCopyUtil {
 	private static SCPClient client;
 	private static SFTPv3Client sftpClient;
 	
-	public static String executeCommand() {
+	public static String executeCommand(Shell shell) {
 		if (ConfigDialog.host == null || ConfigDialog.user == null || ConfigDialog.passwd == null
 				|| ConfigDialog.source == null || ConfigDialog.desc == null) {
 			System.err.println("Can't execute SCP command. Please check \"hostname\" \"username\" and \"password\"");
-			System.exit(1);
 			return "check your config properties,every field must not be null";
 		}
-		Connection conn = new Connection(ConfigDialog.host);
 		try {
+			Connection conn = new Connection(ConfigDialog.host);
 			conn.connect();
 			boolean isAuthenticated = conn.authenticateWithPassword(ConfigDialog.user, ConfigDialog.passwd);
 			if (isAuthenticated == false) {
@@ -44,7 +46,9 @@ public class SshCopyUtil {
 //			client.get("/home/liuwei/lwtest.txt", "/home/liuwei/shelltest/"); // 这里是将服务器端的文件下载到本地的目录下
 //			conn.close();
 		} catch (IOException ex) {
-//			ex.printStackTrace();
+			return "got IOException";
+		} catch(Exception ex){
+			return "got exception";
 		}
 		return "success";
 	}
